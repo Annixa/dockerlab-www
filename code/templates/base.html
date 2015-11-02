@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>{% block title %}Default title{% endblock %}</title>
+	{% block style %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"/>
+	{% endblock style %}
+</head>
+
+<body>
+	<div id="header">
+		<h1>{% block pagetitle %}Default title{% endblock pagetitle %}</h1>
+	</div>
+	<div id="content">
+		<h4>{% block pagesubtitle%}Default subtitle{%endblock pagesubtitle %}</h4>
+	</div>
+	<div id="footer">
+		<table>
+			<tr>
+				<td>python</td>
+				<td>{{ python_version }}</td></tr>
+			{% for package in pip_packages -%}
+			<tr>
+				<td>{{ package['name'] }}</td>
+				<td>{{ package['version'] }}</td></tr>
+			{%- endfor %}
+		</table>
+	</div>
+</body>
+
+</html>
